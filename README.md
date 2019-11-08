@@ -18,7 +18,7 @@ npm run build
 
 项目开启eslint 请按照规范书写代码
 
-App文件中creatd钩子函数中设置了防止vuex刷新消失的方法,勿动
+App文件中creatd钩子函数中设置了防止vuex刷新消失的方法
 
 main.js文件引入全局相关文件
 
@@ -40,7 +40,7 @@ store 存放 vuex的管理
 style 存放 page/components文件中的样式,在页面中使用`@import`引入
 base样式已放入全局
 
-utils 存放封装的axios/fliter以及tool
+utils 存放封装的axios/fliter以及tool:
 
 axios.js文件对axios进行了实例化,请求前挂载请在request拦截器中设置,后台返回状态码处理请在response拦截器中设置
 
