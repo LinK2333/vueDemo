@@ -18,6 +18,8 @@ npm run build
 
 项目开启eslint 请按照规范书写代码
 
+config目录下的dev.env.js和prod.env.js里已分别设置url地址,并挂载到全局,使用`apiUrl`可直接获取
+
 App文件中creatd钩子函数中设置了防止vuex刷新消失的方法
 
 环境中已引入scss,css文件全部放入style文件夹
