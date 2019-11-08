@@ -40,6 +40,11 @@ style 存放 page/components文件中的样式,在页面中使用`@import`引入
 
 utils 存放封装的axios/fliter以及tool
 
+axios.js文件对axios进行了实例化,请求前挂载请在request拦截器中设置,后台返回状态码处理请在response拦截器中设置
+
+filter.js文件设置了全局过滤,已经引入了moment.js,过滤操作放入install中
+
+tool.js文件封装应用工具,如函数截流和函数防抖等
 
 
 

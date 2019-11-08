@@ -28,6 +28,7 @@ service.interceptors.response.use(
       return response.data
     } else {
       if (res.state !== 100) {
+        // 需要做些什么
       } else {
         return response.data
       }
