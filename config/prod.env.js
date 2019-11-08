@@ -1,5 +1,6 @@
 'use strict'
 module.exports = {
   NODE_ENV: '"production"',
-  BASE_API: '"127.0.0.1"', // 正式环境
+  BASE_API: '"http://www.pet.com"', // 正式环境
 }
+

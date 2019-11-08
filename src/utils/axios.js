@@ -10,6 +10,7 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // 在发送请求之前做些什么
+    console.log(process.env.BASE_API)
     return config
   },
   error => {

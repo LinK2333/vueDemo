@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router' // 路由
 import store from './store' // 状态管理
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 // 基础css样式设置
 import '@/style/base.scss'
@@ -14,6 +16,7 @@ import Filter from '@/utils/filter'
 // 引入工具模块
 import _Tool from '@/utils/tool'
 
+Vue.use(ElementUI)
 Vue.use(Filter)
 
 // 工具封装挂载到vue原型
