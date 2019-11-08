@@ -20,6 +20,8 @@ npm run build
 
 App文件中creatd钩子函数中设置了防止vuex刷新消失的方法
 
+环境中已引入scss,css文件全部放入style文件夹
+
 main.js文件引入全局相关文件
 
 src下文件说明：
@@ -47,9 +49,3 @@ axios.js文件对axios进行了实例化,请求前挂载请在request拦截器�
 filter.js文件设置了全局过滤,已经引入了moment.js,过滤操作放入install中
 
 tool.js文件封装应用工具,如函数截流和函数防抖等
-
-
-
-
-
-
