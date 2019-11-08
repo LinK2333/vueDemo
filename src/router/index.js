@@ -13,6 +13,12 @@ export default new Router({
       component: resolve => require(['@/page/index/index.vue'], resolve)
     },
     {
+      path: '/Login',
+      name: 'Login',
+      // component: () => import('@/components/Login')
+      component: resolve => require(['@/page/Login/index.vue'], resolve)
+    },
+    {
       path: '/HelloWorld',
       name: 'HelloWorld',
       // component: () => import('@/components/HelloWorld')

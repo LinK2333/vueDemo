@@ -20,7 +20,13 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      loginForm: {
+        username: '',
+        password: ''
+      },
+      rules: {}
+    }
   },
   methods: {}
 }
