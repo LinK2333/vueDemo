@@ -1,0 +1,47 @@
+@import '../assets/iconfont/iconfont.css';
+html,
+body,
+#app {
+  height: 100%;
+}
+body {
+  font-family: Microsoft Yahei, Arial, Arial, tahoma, Helvetica, sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  // font-family:'Noto Sans SC';
+  font-weight:200;
+  ::-webkit-scrollbar {display:none}
+}
+
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.flex_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex_around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
+}

@@ -17,6 +17,11 @@ export default new Router({
       name: 'HelloWorld',
       // component: () => import('@/components/HelloWorld')
       component: resolve => require(['@/components/HelloWorld'], resolve)
+    },
+    {
+      path: '*',
+      name: 'error',
+      component: resolve => require(['@/components/error'], resolve)
     }
   ]
 })

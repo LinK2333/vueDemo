@@ -27,6 +27,7 @@ src下文件说明：
 api 存放axios请求路径,对应page/components文件中的同名页面
 
 assets 存放本地静态文件
+iconfont 已放入,更新后直接替换即可
 
 components 存放封装的组件
 
@@ -36,7 +37,8 @@ router 设置路由
 
 store 存放 vuex的管理
 
-style 存放 page/components文件中的样式,在页面中使用`@import`引入,base样式已放入全局
+style 存放 page/components文件中的样式,在页面中使用`@import`引入
+base样式已放入全局
 
 utils 存放封装的axios/fliter以及tool
 
