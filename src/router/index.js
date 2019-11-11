@@ -3,26 +3,19 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'index',
-      // component: () => import('@/page/index/index.vue')
-      component: resolve => require(['@/page/index/index.vue'], resolve)
-    },
+    { path: '/', redirect: '/login' },
     {
       path: '/Login',
       name: 'Login',
-      // component: () => import('@/components/Login')
       component: resolve => require(['@/page/Login/index.vue'], resolve)
     },
     {
-      path: '/HelloWorld',
-      name: 'HelloWorld',
-      // component: () => import('@/components/HelloWorld')
-      component: resolve => require(['@/components/HelloWorld'], resolve)
+      path: '/index',
+      name: 'index',
+      component: resolve => require(['@/page/index/index.vue'], resolve)
     },
     {
       path: '*',
@@ -31,3 +24,17 @@ export default new Router({
     }
   ]
 })
+// 路由导航判断是否有登录
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/login') {
+//     next()
+//   } else {
+//     let token = localStorage.getItem('token')
+//     if (token) {
+//       next()
+//     } else {
+//       next('/login')
+//     }
+//   }
+// })
+export default router

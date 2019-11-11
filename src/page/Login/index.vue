@@ -1,21 +1,23 @@
 <template>
-  <el-row class="row" type="flex" justify="center" align="middle">
-    <el-col :span="8">
-      <el-form :model="loginForm" :rules="rules" ref="loginForm" class="demo-loginForm">
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
-        </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input v-model="loginForm.password" placeholder="请输入密码"></el-input>
-        </el-form-item>
-
-        <el-form-item>
-          <el-button type="primary" @click="starLogin('loginForm')">登录</el-button>
-          <el-button @click="resetForm('loginForm')">重置</el-button>
-        </el-form-item>
-      </el-form>
-    </el-col>
-  </el-row>
+  <div class="login">
+    <el-row class="row" type="flex" justify="center" >
+      <el-col :span="8">
+        <div class="title">后台管理系统</div>
+        <el-form :model="loginForm" :rules="rules" ref="loginForm" class="demo-loginForm">
+          <el-form-item label="用户名" prop="username">
+            <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" prop="password">
+            <el-input v-model="loginForm.password" placeholder="请输入密码"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="starLogin">登录</el-button>
+            <el-button @click="resetForm">重置</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -39,9 +41,20 @@ export default {
     }
   },
   methods: {
+    // 登录
     starLogin () {
-      this.$refs.loginForm.validate(valid => {})
+      this.$refs.loginForm.validate(valid => {
+        if (!valid) {
+          return this.$message.error('验证失败!')
+        }
+        // 调用登录接口,获取token,并存到localStorage中
+        // 登录跳转
+        this.$router.push({
+          name: 'index'
+        })
+      })
     },
+    // 重置表单
     resetForm () {
       this.$refs.loginForm.resetFields()
     }
