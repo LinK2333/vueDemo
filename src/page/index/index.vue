@@ -12,7 +12,7 @@ export default {
     return {}
   },
   mounted () {
-    console.log(this.$store.state.Username)
+    console.log(this.$store.state.userInfo)
   },
   methods: {}
 }
