@@ -11,9 +11,19 @@ const store = () =>
     actions
   })
 
-const state = {}
+const state = {
+  userInfo: ''
+}
 const getters = {}
-const mutations = {}
-const actions = {}
+const mutations = {
+  ByUserInfo (state, payload) {
+    state.userInfo = payload
+  }
+}
+const actions = {
+  LoginByUserInfo (state, v) {
+    state.commit('ByUserInfo', v)
+  }
+}
 
 export default store

@@ -1,14 +1,19 @@
 <template>
   <div class="login">
-    <el-row class="row" type="flex" justify="center" >
+    <el-row class="row" type="flex" justify="center">
       <el-col :span="8">
         <div class="title">后台管理系统</div>
         <el-form :model="loginForm" :rules="rules" ref="loginForm" class="demo-loginForm">
           <el-form-item label="用户名" prop="username">
-            <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
+            <el-input prefix-icon="el-icon-user" v-model="loginForm.username" placeholder="请输入用户名"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input v-model="loginForm.password" placeholder="请输入密码"></el-input>
+            <el-input
+              prefix-icon="el-icon-lock"
+              v-model="loginForm.password"
+              show-password
+              placeholder="请输入密码"
+            ></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="starLogin">登录</el-button>
@@ -28,6 +33,33 @@ export default {
         username: 'admin',
         password: '123456'
       },
+      arouter: [
+        {
+          name: '订单管理',
+          children: [
+            {
+              name: '订单列表'
+            },
+            {
+              name: '生产管理'
+            },
+            {
+              name: '退货管理'
+            }
+          ]
+        },
+        {
+          name: '产品管理',
+          children: [
+            {
+              name: '产品列表'
+            },
+            {
+              name: '产品分类'
+            }
+          ]
+        }
+      ],
       rules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -49,9 +81,18 @@ export default {
         }
         // 调用登录接口,获取token,并存到localStorage中
         // 登录跳转
-        this.$router.push({
-          name: 'index'
-        })
+        this.$store
+          .dispatch('LoginByUserInfo', this.loginForm)
+          .then(() => {
+            // 获取路由的全部信息
+
+            this.$router.push({
+              name: 'index'
+            })
+          })
+          .catch(err => {
+            this.$message.error(err) // 登录失败提示错误
+          })
       })
     },
     // 重置表单

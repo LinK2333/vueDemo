@@ -20,10 +20,11 @@ const router = new Router({
     {
       path: '*',
       name: 'error',
-      component: resolve => require(['@/components/error'], resolve)
+      component: resolve => require(['@/components/error.vue'], resolve)
     }
   ]
 })
+
 // 路由导航判断是否有登录
 // router.beforeEach((to, from, next) => {
 //   if (to.path === '/login') {
