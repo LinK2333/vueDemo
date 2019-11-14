@@ -4,7 +4,6 @@
       <Asider></Asider>
     </div>
     <div class="main">
-      <!-- <div class="logout" ><span @click="loginOut">退 出</span> </div> -->
       <div class="picture">
         <el-dropdown trigger="click">
           <span class="el-dropdown-link">
@@ -24,7 +23,6 @@
 </template>
 
 <script>
-// import { hello } from '@/api/index'
 import Breadcrumb from '@/page/index/Breadcrumb'
 import Asider from '@/page/index/Asider'
 import store from '@/store'
