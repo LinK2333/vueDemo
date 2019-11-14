@@ -1,20 +1,53 @@
 <template>
-  <div></div>
+  <div class="layout">
+    <div class="aside">
+      <Asider></Asider>
+    </div>
+    <div class="main">
+      <!-- <div class="logout" ><span @click="loginOut">退 出</span> </div> -->
+      <div class="picture">
+        <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            <img class="img" src="../../assets/images/headerPicture.png" alt />
+            Admin
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item icon="el-icon-circle-close" @click.native="loginOut">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+      <Breadcrumb></Breadcrumb>
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
 // import { hello } from '@/api/index'
-import Header from '@/page/index/header'
+import Breadcrumb from '@/page/index/Breadcrumb'
 import Asider from '@/page/index/Asider'
+import store from '@/store'
 export default {
-  components: { Header, Asider },
+  components: { Asider, Breadcrumb },
   data () {
     return {}
   },
-  mounted () {
-    console.log(this.$store.state.userInfo)
-  },
-  methods: {}
+  mounted () {},
+  methods: {
+    // 登出
+    async loginOut () {
+      let res = await store.dispatch('LogOut')
+      const { status } = res.data
+      if (status === 200) {
+        localStorage.removeItem('tokenkey')
+        this.$message.success('退出登录成功')
+        this.$router.push('/')
+      } else {
+        this.$message.info('退出登录失败')
+      }
+    }
+  }
 }
 </script>
 

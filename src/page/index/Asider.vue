@@ -8,17 +8,27 @@
     active-text-color="#ffd04b"
     unique-opened
   >
-    <el-submenu v-for="item in asideList" :key="item.id" :index="item.id+''">
-      <template slot="title">
-        <i class="el-icon-location"></i>
-        <span>{{ item.authName }}</span>
-      </template>
-      <el-menu-item
-        v-for="item1 in item.children"
-        :key="item1.id"
-        :index="'/'+item1.path"
-      >{{ item1.authName }}</el-menu-item>
-    </el-submenu>
+    <div v-for="route in menusList" :key="route.name" v-if="!route.hidden">
+      <!-- 单路由   -->
+      <el-menu-item v-if="route.alwaysShow" :index="route.children[0].path">
+        <template slot="title">
+          <span>{{route.children[0].name}}</span>
+        </template>
+      </el-menu-item>
+      <!-- 多路由 -->
+      <el-submenu v-else :index="route.path">
+        <template slot="title">
+          <!-- <router-link :to='route.path'> -->
+          <div class="link-style">
+            <span slot="title">{{route.name}}</span>
+          </div>
+          <!-- </router-link> -->
+        </template>
+        <el-menu-item-group v-for="child in route.children" :key="child.name">
+          <el-menu-item :index="child.path">{{child.name}}</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+    </div>
   </el-menu>
 </template>
 
@@ -26,29 +36,18 @@
 export default {
   data () {
     return {
-      asideList: [
-        {
-          id: 1,
-          authName: '系统管理',
-          children: [{
-            id: 2,
-            path: '',
-            authName: '角色管理'
-          },
-          {
-            id: 3,
-            path: '',
-            authName: '权限管理'
-          }]
-        }
-      ]
+      menusList: []
     }
+  },
+  created () {
+    this.menusList = JSON.parse(JSON.stringify(this.$store.getters.routes))
+    console.log(this.menusList)
   }
 }
 </script>
 
 <style lang='scss' scoped>
 .el-menu {
-  border:none;
+  border: none;
 }
 </style>

@@ -33,33 +33,6 @@ export default {
         username: 'admin',
         password: '123456'
       },
-      arouter: [
-        {
-          name: '订单管理',
-          children: [
-            {
-              name: '订单列表'
-            },
-            {
-              name: '生产管理'
-            },
-            {
-              name: '退货管理'
-            }
-          ]
-        },
-        {
-          name: '产品管理',
-          children: [
-            {
-              name: '产品列表'
-            },
-            {
-              name: '产品分类'
-            }
-          ]
-        }
-      ],
       rules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -75,24 +48,18 @@ export default {
   methods: {
     // 登录
     starLogin () {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate(async (valid) => {
         if (!valid) {
           return this.$message.error('验证失败!')
         }
-        // 调用登录接口,获取token,并存到localStorage中
-        // 登录跳转
-        this.$store
-          .dispatch('LoginByUserInfo', this.loginForm)
-          .then(() => {
-            // 获取路由的全部信息
-
-            this.$router.push({
-              name: 'index'
-            })
-          })
-          .catch(err => {
-            this.$message.error(err) // 登录失败提示错误
-          })
+        let res = await this.$store.dispatch('login', this.loginForm)
+        const { status, msg } = res
+        if (status === 200) {
+          this.$message.success('登录成功')
+          this.$router.push({ path: '/index' })
+        } else {
+          this.$message.warning(msg)
+        }
       })
     },
     // 重置表单
