@@ -8,10 +8,18 @@ export const searchList = data =>
     data
   })
 
-// 列表页渲染
+// home下载
 export const exportStaff = data =>
   request({
     url: '/staff/exportStaff',
+    method: 'post',
+    data
+  })
+
+// 查看个人详情
+export const getInfoById = data =>
+  request({
+    url: '/staff/getInfoById',
     method: 'post',
     data
   })

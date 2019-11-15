@@ -83,16 +83,14 @@
       </el-table>
     </div>
 
-    <detailInfo :openInfo="openInfo" @closeInfo="closeInfo"></detailInfo>
+    <detailInfo :openInfo="openInfo" :infoId="infoId" @closeInfo="closeInfo"></detailInfo>
   </div>
 </template>
 
 <script>
 import {
   // 列表渲染
-  searchList,
-  // xiazai
-  exportStaff
+  searchList
 } from '@/api/home'
 import detailInfo from './detailInfo'
 export default {
@@ -127,7 +125,10 @@ export default {
         }
       ],
       // 打开对话框
-      openInfo: false
+      openInfo: false,
+      downUrl: '/staff/exportStaff',
+      // 个人信息id
+      infoId: ''
     }
   },
   mounted () {
@@ -150,13 +151,16 @@ export default {
     // 查看详情
     checkInfo (row) {
       this.openInfo = true
-      console.log(row)
+      this.infoId = row.id
     },
     // 下载
     downLoad () {
-      exportStaff().then(res => {
-        console.log(1)
-      })
+      // exportStaff().then(res => {
+      //   console.log('exportStaff')
+      // })
+      let url = this.apiUrl + this.downUrl
+      // window.open(url)
+      window.location = url
     },
     // 关闭信息框
     closeInfo () {

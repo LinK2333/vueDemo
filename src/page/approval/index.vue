@@ -61,11 +61,16 @@
         <el-table-column prop="emergencyPhoneNumber" label="紧急联系电话" width="150"></el-table-column>
       </el-table>
     </div>
+    <Detail :isOpen='isOpen' @closeApp='closeApp'></Detail>
   </div>
 </template>
 
 <script>
+import Detail from './detail'
 export default {
+  components: {
+    Detail
+  },
   data () {
     return {
       loading: false,
@@ -90,13 +95,19 @@ export default {
           emergencyPhoneNumber: '123213123213'
         }
       ],
-      multipleSelection: []
+      multipleSelection: [],
+      isOpen: false
     }
   },
   methods: {
     search () {},
     document () {},
-    checkInfo () {},
+    checkInfo () {
+      this.isOpen = true
+    },
+    closeApp () {
+      this.isOpen = false
+    },
     handleSelectionChange (val) {
       this.multipleSelection = val
       console.log(this.multipleSelection)
